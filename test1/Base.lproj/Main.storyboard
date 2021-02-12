@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="test1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="150" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Lyv-Pq-lcV">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="imageCell" id="Hin-BY-Ola" customClass="CustomTableViewCell" customModule="test1" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="150"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hin-BY-Ola" id="oC5-Fp-J3a">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RNP-l7-q1O">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+                                                </imageView>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="gtC-yS-Jmf">
+                                                    <rect key="frame" x="197" y="65" width="20" height="20"/>
+                                                </activityIndicatorView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstItem="gtC-yS-Jmf" firstAttribute="centerY" secondItem="Hin-BY-Ola" secondAttribute="centerY" id="0ov-oD-BCV"/>
+                                            <constraint firstItem="gtC-yS-Jmf" firstAttribute="centerX" secondItem="Hin-BY-Ola" secondAttribute="centerX" id="7dk-7q-1gu"/>
+                                            <constraint firstItem="RNP-l7-q1O" firstAttribute="top" secondItem="Hin-BY-Ola" secondAttribute="top" id="Dvd-xg-QN0"/>
+                                            <constraint firstItem="RNP-l7-q1O" firstAttribute="centerX" secondItem="Hin-BY-Ola" secondAttribute="centerX" id="KZC-Tx-RNK"/>
+                                            <constraint firstAttribute="bottom" secondItem="RNP-l7-q1O" secondAttribute="bottom" id="Zsx-i0-lVW"/>
+                                            <constraint firstItem="RNP-l7-q1O" firstAttribute="centerY" secondItem="Hin-BY-Ola" secondAttribute="centerY" id="eov-ed-c7f"/>
+                                            <constraint firstItem="RNP-l7-q1O" firstAttribute="leading" secondItem="Hin-BY-Ola" secondAttribute="leading" id="fON-MI-58K"/>
+                                            <constraint firstAttribute="trailing" secondItem="RNP-l7-q1O" secondAttribute="trailing" id="kF7-D9-db6"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="activityIndicator" destination="gtC-yS-Jmf" id="3eU-Ip-J4q"/>
+                                            <outlet property="loadedImage" destination="RNP-l7-q1O" id="k9w-fK-OZm"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="bQX-AV-2AV"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="9Xd-ZR-EPn"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Lyv-Pq-lcV" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="07Q-cu-z0g"/>
+                            <constraint firstItem="Lyv-Pq-lcV" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Bbn-ld-xnz"/>
+                            <constraint firstItem="Lyv-Pq-lcV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="WPc-RB-3dC"/>
+                            <constraint firstItem="Lyv-Pq-lcV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="kbI-VR-gHN"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="Lyv-Pq-lcV" id="Gsg-xR-E7k"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-197.10144927536234" y="131.91964285714286"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
