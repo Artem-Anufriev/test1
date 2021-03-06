@@ -10,7 +10,8 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
-    let imageData = [String](urlString: "http://placehold.it/375x150?text=", count: 100)
+    var imageData = [String](urlString: "http://placehold.it/375x150?text=", count: 100)
+    var networkService = NetworkService()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return imageData.count
@@ -18,7 +19,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "imageCell", for: indexPath) as! CustomTableViewCell
-        NetworkService.shared.downloadImage(withURL: URL(string: imageData[indexPath.row])!, forCell: cell)
+        networkService.downloadImage(withURL: URL(string: imageData[indexPath.row])!, forCell: cell)
         return cell
     }
     

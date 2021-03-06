@@ -9,7 +9,7 @@ import UIKit
 
 class CustomTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var loadedImage: UIImageView!
+    @IBOutlet weak var loadedImage: UIImageView! 
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
 }
