@@ -10,17 +10,29 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
-    var imageData = [String](urlString: "http://placehold.it/375x150?text=", count: 100)
+    var imageURL = [String](urlString: "http://placehold.it/375x150?text=", count: 100)
     var networkService = NetworkService()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return imageData.count
+        return imageURL.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "imageCell", for: indexPath) as! CustomTableViewCell
-        networkService.downloadImage(withURL: URL(string: imageData[indexPath.row])!, forCell: cell)
+        print("cellForRowAt \(indexPath.row)")
+        //networkService.downloadImage(withURL: URL(string: imageURL[indexPath.row])!, forCell: cell)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        print("willDisplay \(indexPath.row)")
+        if let willDisplayCell = cell as? CustomTableViewCell {
+            networkService.downloadImage(withURL: URL(string: imageURL[indexPath.row])!, forCell: willDisplayCell)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        print("didEndDisplaying \(indexPath.row)")
     }
     
     override func viewDidLoad() {
