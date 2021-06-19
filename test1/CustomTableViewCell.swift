@@ -12,4 +12,7 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var loadedImage: UIImageView! 
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    override func prepareForReuse() {
+        self.loadedImage.image = nil
+    }
 }

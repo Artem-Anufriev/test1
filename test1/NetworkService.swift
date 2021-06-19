@@ -13,50 +13,8 @@ class NetworkService {
     //    static let shared = NetworkService()
     
     var cachedImages = NSCache<NSString,UIImage>()
+    var tasks : [URL:URLSessionTask] = [:]
     
-    //    func downloadImage(withURL url: URL, forCell cell: UITableViewCell) {
-    //
-    //        if let imageCell = cell as? CustomTableViewCell {
-    //
-    //            print("Download \(url.absoluteString) started")
-    //            imageCell.activityIndicator.startAnimating()
-    //
-    //            if let image = cachedImages.object(forKey: url.absoluteString as NSString) {
-    //
-    //                DispatchQueue.main.async {
-    //                    if !imageCell.isHidden {
-    //                        imageCell.loadedImage.image = image
-    //                        imageCell.activityIndicator.stopAnimating()
-    //                        print("Download \(url.absoluteString) finished from cache")
-    //                    } else {
-    //                        print("url: \(url), responce is ignored! Cell is hidden.")
-    //                    }
-    //                }
-    //
-    //            } else {
-    //
-    //                URLSession.shared.dataTask(with: url) { data, response, error in
-    //
-    //                    guard error == nil,
-    //                          data != nil,
-    //                          //response.statusCode == 200,
-    //                          let image = UIImage(data: data!) else { return }
-    //
-    //                    self.cachedImages.setObject(image, forKey: url.absoluteString as NSString)
-    //
-    //                    DispatchQueue.main.async {
-    //                        if url == response?.url, !imageCell.isHidden {
-    //                            imageCell.loadedImage.image = image
-    //                            imageCell.activityIndicator.stopAnimating()
-    //                            print("Download \(url.absoluteString) finished")
-    //                        } else {
-    //                            print("url: \(url), responce is ignored! Cell is hidden.")
-    //                        }
-    //                    }
-    //                }.resume()
-    //            }
-    //        }
-    //    }
     func downloadImage(withURL url: URL, forCell cell: UITableViewCell) {
         if let imageCell = cell as? CustomTableViewCell {
             print("Download \(url.absoluteString) started")
@@ -76,7 +34,7 @@ class NetworkService {
             print("Download \(url.absoluteString) finished from cache")
             completion(image)
         } else {
-            URLSession.shared.dataTask(with: url) { data, response, error in
+            let task = URLSession.shared.dataTask(with: url) { data, response, error in
                 guard error == nil,
                       data != nil,
                       //response.statusCode == 200,
@@ -84,7 +42,16 @@ class NetworkService {
                 self.cachedImages.setObject(image, forKey: url.absoluteString as NSString)
                 print("Download \(url.absoluteString) finished from url")
                 completion(image)
-            }.resume()
+            }
+            task.resume()
+            tasks[url] = task
         }
+    }
+    
+    func cancelTask(url: URL) {
+        guard let task = tasks[url] else { return }
+        print("Download \(url.absoluteString) cancelled")
+        task.cancel()
+        tasks[url] = nil
     }
 }

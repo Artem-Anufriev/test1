@@ -18,10 +18,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "imageCell", for: indexPath) as! CustomTableViewCell
-        print("cellForRowAt \(indexPath.row)")
-        //networkService.downloadImage(withURL: URL(string: imageURL[indexPath.row])!, forCell: cell)
-        return cell
+        return tableView.dequeueReusableCell(withIdentifier: "imageCell", for: indexPath) as! CustomTableViewCell
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -33,6 +30,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         print("didEndDisplaying \(indexPath.row)")
+        networkService.cancelTask(url: URL(string: imageURL[indexPath.row])!)
     }
     
     override func viewDidLoad() {
