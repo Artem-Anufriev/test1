@@ -20,6 +20,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="150" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Lyv-Pq-lcV">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="imageCell" id="Hin-BY-Ola" customClass="CustomTableViewCell" customModule="test1" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="150"/>
@@ -46,6 +47,7 @@
                                             <constraint firstItem="RNP-l7-q1O" firstAttribute="leading" secondItem="Hin-BY-Ola" secondAttribute="leading" id="fON-MI-58K"/>
                                             <constraint firstAttribute="trailing" secondItem="RNP-l7-q1O" secondAttribute="trailing" id="kF7-D9-db6"/>
                                         </constraints>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="activityIndicator" destination="gtC-yS-Jmf" id="3eU-Ip-J4q"/>
                                             <outlet property="loadedImage" destination="RNP-l7-q1O" id="k9w-fK-OZm"/>
@@ -55,6 +57,7 @@
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="bQX-AV-2AV"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="9Xd-ZR-EPn"/>
+                                    <outlet property="prefetchDataSource" destination="BYZ-38-t0r" id="Txd-jG-acO"/>
                                 </connections>
                             </tableView>
                         </subviews>
