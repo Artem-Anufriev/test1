@@ -15,12 +15,4 @@ class CustomTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         self.loadedImage.image = nil
     }
-    
-    func configureCell(with withImage: UIImage?) {
-        self.loadedImage.image = withImage
-    }
-    
-    func truncateCell() {
-        self.loadedImage.image = nil
-    }
 }

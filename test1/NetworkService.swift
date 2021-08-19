@@ -35,26 +35,27 @@ class NetworkService {
                 guard error == nil,
                       data != nil,
                       let image = UIImage(data: data!) else {
-                        //self.tasks[url] = nil
+                        self.tasks[url] = nil
                         completion(nil)
                         return
                       }
                 self.cachedImages.setObject(image, forKey: url.absoluteString as NSString)
                 print("Download \(url.absoluteString) finished from url")
+                self.tasks[url] = nil
                 completion(image)
             }
-            tasks[url] = task
             task.resume()
+            tasks[url] = task
         }
     }
     
     func cancelTask(url: URL) {
         guard let task = tasks[url] else {
-            print("Image \(url.absoluteString) is nil")
+            print("Image \(url.absoluteString) is ignored")
             return
         }
         print("Download \(url.absoluteString) cancelled")
         task.cancel()
-        //tasks[url] = nil
+        tasks[url] = nil
     }
 }
